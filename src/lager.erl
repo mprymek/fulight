@@ -6,13 +6,13 @@
 
 
 error(Format,Args) ->
-  'Elixir.Logger':log(error,io_lib:format(Format,Args),[]).
+  'Elixir.Logger':bare_log(error,io_lib:format(Format,Args),[]).
 
 warning(Format,Args) ->
-  'Elixir.Logger':log(warn,io_lib:format(Format,Args),[]).
+  'Elixir.Logger':bare_log(warn,io_lib:format(Format,Args),[]).
 
 info(Format,Args) ->
-  'Elixir.Logger':log(info,io_lib:format(Format,Args),[]).
+  'Elixir.Logger':bare_log(info,io_lib:format(Format,Args),[]).
 
 debug(_Format,_Args) -> ok.
 
