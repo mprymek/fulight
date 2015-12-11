@@ -147,7 +147,7 @@ server_init(State=#?STATE{listener=L, transport=T, socket=S, socket_options=O}) 
 	% SSL handshake if necessary
 	case S of
 		{sslsocket, _, _} ->
-			lager:debug("ssl info ~p", [ssl:connection_info(S)]),
+			lager:debug("ssl info ~p", [ssl:connection_information(S)]),
 			% Remove options for ssl only
 			O1 = lists:foldl(	fun(Key, Acc) ->
 									proplists:delete(Key, Acc)
@@ -258,7 +258,7 @@ handle_info(timeout, State=#?STATE{transport=T, socket=undefined, socket_options
 			lager:info("connection established to ~p:~p", [Addr, Port]),
 			case Socket of
 				{sslsocket, _, _} ->
-					lager:debug("ssl info: ~p", [ssl:connection_info(Socket)]),
+					lager:debug("ssl info: ~p", [ssl:connection_information(Socket)]),
 					case ssl:peercert(Socket) of
 						{ok, _} ->
 							client_init(State#?STATE{
